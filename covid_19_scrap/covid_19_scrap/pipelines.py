@@ -8,7 +8,21 @@
 from itemadapter import ItemAdapter
 import pymongo
 
-class Covid19ScrapPipeline:
-    def process_item(self, item, spider):
 
+
+
+class Covid19WebScraperPipeline(object):
+    def __init__(self):
+        self.conn = pymongo.MongoClient(
+            'localhost',
+            27017
+        )
+        self.conn.drop_database('covidStats')
+        db = self.conn['covidStats']                    
+        self.collection = db['covid_tb1']               #table
+        
+
+
+    def process_item(self, item, spider):
+        self.collection.insert_one(dict(item))
         return item

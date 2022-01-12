@@ -6,7 +6,9 @@
 import scrapy
 
 
-class Covid19ScrapItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
+class Covid19WebScraperItem(scrapy.Item):
+
+    Country = scrapy.Field()
+    CoronavirusCases = scrapy.Field()
+    Deaths = scrapy.Field()
+    Recovered = scrapy.Field()
